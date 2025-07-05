@@ -88,3 +88,76 @@ Chronos is a family of pretrained time series forecasting models that treat time
 - Accelerate 0.32+
 - GluonTS for training and evaluation workflows
 - HuggingFace Hub for model distribution
+
+## Gold Futures Analysis Project
+
+### Project Overview
+The `gold_futures_analysis/` directory contains a comprehensive analysis of Chronos models for gold futures forecasting, including systematic optimization and performance evaluation.
+
+### Key Analysis Files
+- `gold_futures_chronos_fev_interactive.ipynb` - Main interactive analysis notebook with FEV framework integration
+- `gold_futures_forecast_dashboard.html` - Interactive Plotly dashboard (4.9MB) with comprehensive visualizations
+- `PHASE1_OPTIMIZATION_REPORT.md` - Complete Phase 1 optimization analysis and results
+- `FORECASTING_GUIDE.md` - Comprehensive guide to forecasting methodologies
+
+### Data Files
+- `GCUSD_MAX_FROM_PERPLEXITY.csv` - Gold futures OHLCV data (2020-2021 primary analysis period)
+- `gold_futures_forecast_predictions.csv` - Complete prediction results with all models
+- `gold_futures_forecast_metrics.csv` - Performance metrics comparison
+
+### Optimization Results
+- `phase1_context_window_results.csv` - Context window optimization (30, 63, 126, 252 days)
+- `phase1_model_size_results.csv` - Model size comparison (Tiny, Small, Base)
+- `phase1_horizon_results.csv` - Prediction horizon analysis (1, 3, 7, 14 days)
+- `phase1_final_comparison_results.csv` - Comprehensive model comparison
+- `phase1_optimization_summary.csv` - Summary statistics and optimal configuration
+
+### Analysis Scripts
+- `run_phase1_optimization.py` - Context window optimization script
+- `run_model_size_comparison.py` - Model size comparison script  
+- `run_horizon_analysis.py` - Prediction horizon analysis script
+- `run_final_optimization_comparison.py` - Comprehensive final comparison script
+
+### Optimal Configuration Found
+```
+Context Window: 126 days
+Model: amazon/chronos-bolt-base
+Prediction Horizon: 1 day
+Performance: MASE 1.4259 (vs 0.9953 naive baseline)
+Directional Accuracy: 47.2%
+```
+
+### Key Findings
+1. **Naive baseline dominance** in 2020-2021 trending gold market (MASE: 0.9953)
+2. **Chronos optimization** achieved minimal improvement (-0.5%) but provides valuable directional signals
+3. **Systematic testing** of 18+ configurations identified optimal settings
+4. **Ensemble approach recommended** combining naive accuracy with Chronos directional intelligence
+
+### Running the Analysis
+```bash
+# Context window optimization
+python3 run_phase1_optimization.py
+
+# Model size comparison  
+python3 run_model_size_comparison.py
+
+# Prediction horizon analysis
+python3 run_horizon_analysis.py
+
+# Final comprehensive comparison
+python3 run_final_optimization_comparison.py
+```
+
+### Interactive Dashboard
+Open `gold_futures_forecast_dashboard.html` in a web browser for interactive exploration of:
+- Actual vs predicted prices with zoom capabilities
+- Model performance comparison charts
+- Error analysis and distribution plots
+- Directional accuracy metrics
+- Rolling performance analysis
+
+### Future Development
+- **Phase 2**: Feature engineering with technical indicators and external data
+- **Ensemble methods**: Combining naive + Chronos for production systems
+- **Market regime detection**: Volatility-based model switching
+- **Extended testing**: 2022-2024 data validation

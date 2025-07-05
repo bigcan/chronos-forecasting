@@ -1,0 +1,2 @@
+optimization_date,best_model,best_mase,optimal_context_window,optimal_model_size,optimal_horizon,total_models_tested,evaluation_samples
+2025-07-05 22:00:53,Naive,0.9953,126,Chronos-Bolt-Base,1,6,200.0
