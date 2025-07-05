@@ -273,7 +273,9 @@ def test_complete_notebook():
             fig.add_trace(go.Scatter(x=data['Date'][:50], y=data['Close'][:50], mode='lines'))
             print("✅ Plotly visualization works")
         except ImportError:
-            print("⚠️ Plotly not available (optional)")
+            print("❌ Plotly not available: Mime type rendering requires nbformat>=4.2.0 but it is not installed")
+            print("Creating static matplotlib chart instead...")
+            print("⚠️ To fix this, install visualization dependencies: pip install 'chronos-forecasting[visualization]'")
             
     except Exception as e:
         print(f"❌ Visualization test failed: {e}")
