@@ -481,6 +481,8 @@ class ChronosBoltPipeline(BaseChronosPipeline):
         context: Union[torch.Tensor, List[torch.Tensor]],
         prediction_length: Optional[int] = None,
         limit_prediction_length: bool = False,
+        num_samples: Optional[int] = None,
+        **kwargs,
     ) -> torch.Tensor:
         """
         Get forecasts for the given time series.
@@ -509,6 +511,24 @@ class ChronosBoltPipeline(BaseChronosPipeline):
             When limit_prediction_length is True and the prediction_length is
             greater than model's trainig prediction_length.
         """
+        if num_samples is not None:
+            warnings.warn(
+                "ChronosBolt models output quantiles directly and do not support sampling. "
+                "The 'num_samples' parameter will be ignored.",
+                UserWarning,
+                stacklevel=2
+            )
+        
+        # Ignore other sampling-related parameters that might be passed
+        for param in ['temperature', 'top_k', 'top_p']:
+            if param in kwargs:
+                warnings.warn(
+                    f"ChronosBolt models do not support the '{param}' parameter. "
+                    f"It will be ignored.",
+                    UserWarning,
+                    stacklevel=2
+                )
+        
         context_tensor = self._prepare_and_validate_context(context=context)
 
         model_context_length = self.model.config.chronos_config["context_length"]
