@@ -36,12 +36,43 @@ def test_stationarity(series: pd.Series) -> dict:
     Returns:
         Dictionary with test results
     """
+    global STATSMODELS_AVAILABLE
+    
     if not STATSMODELS_AVAILABLE:
-        print("⚠️  statsmodels not available. Installing...")
-        import subprocess
-        import sys
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "statsmodels"])
+        try:
+            print("⚠️  statsmodels not available. Installing...")
+            import subprocess
+            import sys
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "statsmodels"])
+            STATSMODELS_AVAILABLE = True
+        except Exception as e:
+            print(f"❌ Failed to install statsmodels: {e}")
+            return {
+                'adf_statistic': np.nan,
+                'adf_pvalue': np.nan,
+                'adf_critical_values': {},
+                'adf_is_stationary': False,
+                'kpss_statistic': np.nan,
+                'kpss_pvalue': np.nan,
+                'kpss_critical_values': {},
+                'kpss_is_stationary': False
+            }
+    
+    # Import functions when needed
+    try:
         from statsmodels.tsa.stattools import adfuller, kpss
+    except ImportError as e:
+        print(f"❌ Failed to import statsmodels functions: {e}")
+        return {
+            'adf_statistic': np.nan,
+            'adf_pvalue': np.nan,
+            'adf_critical_values': {},
+            'adf_is_stationary': False,
+            'kpss_statistic': np.nan,
+            'kpss_pvalue': np.nan,
+            'kpss_critical_values': {},
+            'kpss_is_stationary': False
+        }
     
     # ADF test (null hypothesis: non-stationary)
     adf_result = adfuller(series.dropna())

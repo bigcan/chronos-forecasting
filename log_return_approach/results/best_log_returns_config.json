@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "analysis_type": "Log Returns Forecasting",
+    "model_type": "Real Chronos Models Only",
+    "date_generated": "2025-07-06T12:36:21.298192",
+    "total_experiments": 18,
+    "models_tested": [
+      "chronos_bolt_base",
+      "chronos_bolt_small"
+    ]
+  },
+  "best_configuration": {
+    "model": "chronos_bolt_small",
+    "context_window": 63,
+    "horizon": 7,
+    "model_type": "Real_Chronos"
+  },
+  "return_metrics": {
+    "mae": 0.008963480449985614,
+    "rmse": 0.011409987274426752,
+    "hit_rate": 0.7142857142857143,
+    "volatility_ratio": 0.011577227270930112
+  },
+  "price_metrics": {
+    "mae": 31.598915143532036,
+    "mape": 1.7541353955671832
+  },
+  "performance_summary": {
+    "best_return_mae": 0.008963480449985614,
+    "best_hit_rate": 0.7142857142857143,
+    "best_price_mae": 16.352827879591057,
+    "average_hit_rate": 0.46031746031746035,
+    "average_volatility_ratio": 0.017007334489075595
+  }
+}
