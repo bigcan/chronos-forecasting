@@ -1,0 +1,9 @@
+{
+  "total_forecasts": 15864,
+  "improvement_factor": 220.33333333333334,
+  "avg_data_utilization": 1.0,
+  "best_hit_rate": 0.525027808676307,
+  "best_return_mae": 0.0067690398450919054,
+  "statistical_power": "High",
+  "all_errors_fixed": true
+}

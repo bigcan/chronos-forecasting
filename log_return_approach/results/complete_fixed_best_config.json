@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "analysis_type": "Complete Fixed Log Returns Forecasting",
+    "model_type": "Zero-Shot Chronos (All Errors Fixed)",
+    "date_generated": "2025-07-06T17:41:59.280619",
+    "total_experiments": 18,
+    "total_forecasts": 15864,
+    "total_samples": 58056,
+    "avg_data_utilization": 1.0,
+    "improvement_factor": 220.33333333333334
+  },
+  "best_configuration": {
+    "model": "chronos_bolt_base",
+    "context_window": 126,
+    "horizon": 7,
+    "model_type": "Zero_Shot_Chronos_Complete_Fix"
+  },
+  "performance_metrics": {
+    "return_mae": 0.007038272755053338,
+    "return_rmse": 0.009781724665679833,
+    "hit_rate": 0.525027808676307,
+    "volatility_ratio": 0.10462205343260414,
+    "price_mae": 12.807524635737195,
+    "price_mape": 0.6890204842138578,
+    "num_forecasts": 899,
+    "data_utilization": 1.0,
+    "success_rate": 1.0
+  },
+  "statistical_robustness": {
+    "high_power_configs": 18,
+    "very_high_power_configs": 18,
+    "statistical_significance": "High"
+  },
+  "error_resolution": {
+    "chronos_bolt_api": "Fixed",
+    "zero_shot_methodology": "Fixed",
+    "forecasting_loop_termination": "Fixed",
+    "sample_size_crisis": "Fixed",
+    "data_utilization": "Fixed",
+    "all_critical_errors": "Resolved"
+  }
+}
