@@ -52,7 +52,8 @@
       "Bash(jupyter nbconvert:*)",
       "Bash(pip3 install:*)",
       "Bash(source:*)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

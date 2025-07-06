@@ -95,7 +95,8 @@ Chronos is a family of pretrained time series forecasting models that treat time
 The `gold_futures_analysis/` directory contains a comprehensive analysis of Chronos models for gold futures forecasting, including systematic optimization and performance evaluation.
 
 ### Key Analysis Files
-- `gold_futures_chronos_fev_interactive.ipynb` - Main interactive analysis notebook with FEV framework integration
+- `gold_futures_chronos_fev_interactive.ipynb` - Main interactive analysis notebook with FEV framework integration (2020-2021 data)
+- `gold_futures_chronos_2016_2019_analysis.ipynb` - Market regime comparison analysis for stable period (2016-2019 data)
 - `gold_futures_forecast_dashboard.html` - Interactive Plotly dashboard (4.9MB) with comprehensive visualizations
 - `PHASE1_OPTIMIZATION_REPORT.md` - Complete Phase 1 optimization analysis and results
 - `FORECASTING_GUIDE.md` - Comprehensive guide to forecasting methodologies
@@ -155,6 +156,44 @@ Open `gold_futures_forecast_dashboard.html` in a web browser for interactive exp
 - Error analysis and distribution plots
 - Directional accuracy metrics
 - Rolling performance analysis
+
+## Market Regime Comparison Analysis
+
+### Purpose and Methodology
+The `gold_futures_chronos_2016_2019_analysis.ipynb` notebook provides a comprehensive market regime comparison by analyzing Chronos model performance during stable market conditions (2016-2019) versus volatile market conditions (2020-2021).
+
+### Key Research Questions
+1. **Market Regime Impact**: Do sophisticated models like Chronos perform better relative to naive baselines in stable vs volatile markets?
+2. **Volatility Effect**: How does market volatility affect the relative performance gap between Chronos and simple forecasting methods?
+3. **Pattern Recognition**: Are transformer-based models more effective in stable market conditions with consistent patterns?
+
+### Analysis Framework
+- **2016-2019 Period**: Stable, pre-COVID market conditions with lower volatility
+- **2020-2021 Period**: Volatile, COVID-era market with extreme price movements and uncertainty
+- **Identical Methodology**: Same evaluation framework ensures fair comparison across market regimes
+- **Comprehensive Metrics**: MASE, MAE, RMSE, directional accuracy, and statistical significance testing
+
+### Expected Outputs
+- `gold_futures_forecast_2016_2019_metrics.csv` - Performance metrics for stable period
+- `gold_futures_forecast_2016_2019_predictions.csv` - Detailed predictions for 2016-2019
+- `market_regime_comparison_2016_2019_vs_2020_2021.csv` - Comparative analysis results
+
+### Key Hypothesis
+Sophisticated forecasting models should perform better relative to naive baselines in stable market conditions due to:
+- Consistent price patterns enabling better pattern recognition
+- Lower volatility reducing extreme outliers that challenge model predictions
+- Gradual price movements favoring learned temporal dependencies
+
+### Running the Comparison Analysis
+```bash
+# Run 2016-2019 analysis first
+jupyter notebook gold_futures_chronos_2016_2019_analysis.ipynb
+
+# Then run 2020-2021 analysis if not already completed
+jupyter notebook gold_futures_chronos_fev_interactive.ipynb
+
+# Results automatically generate comparison when both periods are analyzed
+```
 
 ### Future Development
 - **Phase 2**: Feature engineering with technical indicators and external data
